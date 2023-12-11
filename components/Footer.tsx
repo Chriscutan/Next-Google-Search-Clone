@@ -2,7 +2,7 @@ import Link from "next/link"
 
 function Footer() {
   return (
-    <footer className="bg-[#171717] text-white text-sm flex flex-col items-center space-y-3 lg:flex lg:flex-row lg:justify-between py-2 px-5 border-t border-gray-500">
+    <footer className="bg-[#171717] text-white text-sm flex flex-col items-center space-y-3 lg:flex lg:flex-row lg:items-center lg:justify-between py-2 px-5 border-t border-gray-500">
         <div className="flex items-center space-x-3">
             <Link href={'https://about.google/?fg=1'} className="hover:underline">
               About

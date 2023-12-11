@@ -1,9 +1,18 @@
+"use client"
+
 import HomeHeader from "@/components/HomeHeader";
 import Image from "next/image";
 import { MagnifyingGlassIcon, MicrophoneIcon, CameraIcon } from "@heroicons/react/20/solid";
 import Footer from "@/components/Footer";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function Home() {
+
+  const router =  useRouter();
+
+  const [searchTerm, setSearchTerm] = useState("");
   return (
     <main className="h-screen w-screen bg-[#202124] flex flex-col justify-between">
       <HomeHeader />
@@ -22,7 +31,7 @@ export default function Home() {
          p-3 w-full lg:w-[600px] hover:bg-gray-400/10 hover:border-none ">
             <MagnifyingGlassIcon className="h-5 w-5 text-gray-500" />
 
-            <input type="text" className="bg-transparent flex-1 outline-none text-white" />
+            <input value={searchTerm} onChange={e => setSearchTerm(e.target.value)} type="text" className="bg-transparent flex-1 outline-none text-white" />
 
             <div className="flex items-center space-x-3">
               <MicrophoneIcon className="h-5 w-5 text-gray-500" />
@@ -32,9 +41,10 @@ export default function Home() {
          </div>
 
          <div className="flex items-center space-x-3 mt-5">
-          <button className="text-white text-sm py-2 px-4 bg-gray-200/20 rounded-md hover:border hover:border-white">Google Search</button>
-          <button className="text-white text-sm py-2 px-4 bg-gray-200/20 rounded-md hover:border hover:border-white">I'm Feeling Lucky</button>
+            <button onClick={() => router.push(`/search?${searchTerm}`)} className="text-white text-sm py-2 px-4 bg-gray-200/20 rounded-md hover:border hover:border-white">Google Search</button>
+            <button className="text-white text-sm py-2 px-4 bg-gray-200/20 rounded-md hover:border hover:border-white"><Link href={'https://doodles.google/'}>I'm Feeling Lucky</Link></button>
          </div>
+
       </section>
 
       <Footer />
